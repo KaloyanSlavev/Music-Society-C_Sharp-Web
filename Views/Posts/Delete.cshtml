@@ -1,0 +1,81 @@
+﻿@model Music_Society_Forum.Models.Post
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="view-header">Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Review</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            Content
+        </dt>
+        <dd>
+            @Html.Raw(Model.Body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            Author
+        </dt>
+        <dd>
+            @if (ViewBag.PostAuthor != null)
+            {
+                @ViewBag.PostAuthor.FullName @:(@ViewBag.PostAuthor.UserName)
+            }
+            else
+            {
+                <i>Undisclosed author</i>
+            }
+        </dd>
+        <dt>
+            Comments
+        </dt>
+        <dd>
+            (@ViewBag.Comments.Count)
+            @if (ViewBag.Comments.Count > 0)
+            { 
+                @: :
+                <ul>
+                    @foreach (var comment in ViewBag.Comments)
+                    {
+                    <li>
+                        @comment.Date - @comment.Author.FullName (@comment.Author.UserName) - 
+                        @Html.ActionLink("Details", "../Comments/Details", new { id = comment.Id }) |
+                        @Html.ActionLink("Edit", "../Comments/Edit", new { id = comment.Id }) |
+                        @Html.ActionLink("Delete", "../Comments/Delete", new { id = comment.Id })
+                    </li>
+                    }  
+                </ul>
+            }
+            
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Back to List", "Index") | 
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    }
+</div>

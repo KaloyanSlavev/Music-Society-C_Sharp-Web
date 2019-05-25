@@ -1,0 +1,95 @@
+﻿@using Music_Society_Forum.Classes;
+
+@{
+    ViewBag.Title = "Admin Home";
+}
+
+@*Reviews*@
+<section class="row">   
+    <article class="col-md-12">
+        @* Recommended Reviews *@
+        <h2 class="view-header">Recommended Reviews (@ViewBag.RecommendedPosts.Count)</h2>
+        @if (ViewBag.RecommendedPosts.Count == 0)
+        {
+            <div>No reviews.</div>
+        }
+        else
+        {
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    @*<th>Content</th>*@
+                    <th>Date</th>
+                    <th>Author</th>
+                    <th>Comments</th>
+                    <th>IsRecommended</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach (var post in ViewBag.RecommendedPosts)
+                {
+                    <tr>
+                        <td>
+                            @post.Title
+                        </td>
+                        @*<td>
+                            @Html.Raw(Utils.CutText(post.Body, 100))
+                        </td>*@
+                        <td>
+                            @post.Date
+                        </td>
+                        <td>
+                            @if (post.Author != null)
+                            {
+                                if (post.Author.FullName != null)
+                                {
+                                    @post.Author.FullName
+                                    @:(@post.Author.UserName)
+                                    }
+                                else
+                                {
+                                    @post.Author.UserName
+                                }
+                            }
+                            else
+                            {
+                                <i>Undisclosed author</i>
+                            }
+                        </td>
+                        <td>
+                            @post.Comments.Count
+                        </td>
+                        <td>
+                            @post.IsRecommended
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "../Posts/Edit", new { id = post.Id }) |
+                            @Html.ActionLink("Edit", "Edit", new { id = post.Id }) |
+                            @Html.ActionLink("Delete", "../Posts/Delete", new { id = post.Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+        }        
+
+        <section class="col-md-6">
+            <h2 class="view-header">Reviews (@ViewBag.PostsCount)</h2>
+            <p>
+                @Html.ActionLink("List of Reviews", "../Posts")
+            </p>    
+        </section>
+            
+        <section class="col-md-6">
+            <h2 class="view-header">Comments (@ViewBag.CommentsCount)</h2>
+            <p>
+                @Html.ActionLink("List of Comments", "../Comments")
+            </p>
+        </section>
+
+        <section class="col-md-6">
+            <h2 class="view-header">Categories (@ViewBag.CategoriesCount)</h2>
+            <p>
+                @Html.ActionLink("List of Categories", "../Categories")
+            </p>
+        </section>
+    </article> 
+</section>

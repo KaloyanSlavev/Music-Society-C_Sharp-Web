@@ -1,0 +1,40 @@
+﻿@model Music_Society_Forum.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="view-header">@ViewBag.Title</h2>
+
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Category @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>Reviews</dt>
+        <dd>(@ViewBag.Posts.Count)
+            <ul>
+                @foreach (var post in ViewBag.Posts)
+                {
+                    <li>
+                        @post.Date: <strong>@post.Title</strong>
+                        by <i> @post.Author.FullName (@post.Author.UserName)</i> 
+                        @Html.ActionLink("Details", "../Posts/Details", new { id = post.Id })                  
+                    </li>
+                }
+            </ul>            
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+</p>

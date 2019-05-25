@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Just Music</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false) @* added for datetimepicker *@
+    @Scripts.Render("~/bundles/modernizr")
+
+    @* bootstrap-datetimepicker requires jQuery to be loaded first
+        => jQuery bundle moved to top of Layout page *@
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Just Music", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">                                     
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Reviews", "Index", "Posts")</li>
+                    <li>@Html.ActionLink("Comments", "Index", "Comments")</li>
+
+                    @* Guest users do not see the new post view *@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("New Review", "Create", "Posts")</li>
+                        <li>@Html.ActionLink("My Texts", "Index", "My")</li>
+                    }
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrators"))
+                    {
+                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                    }
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @Html.Partial("_Notifications") @* added for notifications *@
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Software Technologies - June 2016 @@ SoftUni, Anna Stambolieva</p>
+        </footer>
+    </div>
+
+
+    @* bootstrap-datetimepicker requires jQuery to be loaded first
+        => jQuery bundle moved to top of Layout page *@
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
