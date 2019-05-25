@@ -1,0 +1,149 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.post-title {
+    background-color: cadetblue;
+    text-decoration: none;
+    color: floralwhite;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+.post-subtitle {
+    padding: 0px 0px 10px 20px;
+}
+
+.post-body {
+    text-align: justify;
+}
+
+.post-links {
+    padding: 10px 0 0 0;
+}
+
+.sidebar {
+    background-color: whitesmoke; 
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.sidebar-header {
+    background-color: seagreen;
+    color: floralwhite;
+    /*text-align: center;*/
+    margin-top: -10px;
+    /*padding: 20px 10px 20px 10px;*/
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.sidebar-block {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.sidebar-post {
+    padding: 0px;
+    text-decoration: none;
+    color: white;
+}
+
+.comments-sidebar {
+    background-color: whitesmoke; 
+    margin-top: 20px;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+
+.comments-header {
+    background-color: seagreen;
+    color: floralwhite;
+    /*text-align: center;*/
+    margin-top: -10px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.comment-title {
+    background-color: cadetblue;
+    color: floralwhite;
+    font-weight: 100;
+    /*text-align: center;*/
+    padding: 10px 20px 10px 20px;
+    border-radius: 15px;
+}
+
+.comment-subtitle {
+    /*text-align: center;*/
+    padding: 5px 20px 5px 20px;
+    font-style: italic;
+}
+
+.comment-text {
+    /*text-align: justify;*/
+    padding-bottom: 20px;
+}
+
+.comment-links {
+    padding: 0px 0px 10px 20px;
+}
+
+.view-header {
+    background-color: seagreen;
+    color: floralwhite;
+    /*text-align: center;*/
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.alert {
+    margin-top: 10px;
+}
+
+.search {
+    background-color: cadetblue;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.search-home {
+    margin: -20px -20px -10px -20px;
+}
+
+.prev-next {
+    background-color: cadetblue;
+    margin: -10px 0px 0px 0px;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.category {
+    border-style: solid; 
+    border-color: cadetblue;
+    border-radius: 15px;
+    padding: 1px 5px;
+    font-style:italic; 
+}
